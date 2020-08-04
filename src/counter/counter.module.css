@@ -23,4 +23,16 @@
 .Counter ul {
   margin-top: 50px;
 }
+
+.Counter input {
+  width: 400px;
+  height: 35px;
+  margin-top: 50px;
+}
+
+.Counter button {
+  width: 100px;
+  height: 40px;
+  margin-top: 30px;
+}
 /*# sourceMappingURL=counter.module.css.map */
