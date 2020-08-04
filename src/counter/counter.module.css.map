@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,QAAQ,CAAA;EACJ,KAAK,EAAG,IAAI;EACZ,MAAM,EAAG,KAAK;EACd,OAAO,EAAG,IAAI;EACd,WAAW,EAAE,MAAM;EAEnB,cAAc,EAAE,MAAM;CAUzB;;AAhBD,AAOI,QAPI,CAOJ,QAAQ,CAAA;EACJ,UAAU,EAAG,KAAK;EAClB,SAAS,EAAE,IAAI;EACf,OAAO,EAAG,SAAS;EACnB,MAAM,EAAG,eAAe;CAC3B;;AAZL,AAaI,QAbI,CAaJ,EAAE,CAAA;EACE,UAAU,EAAG,IAAI;CACpB",
+    "sources": [
+        "counter.module.scss"
+    ],
+    "names": [],
+    "file": "counter.module.css"
+}
