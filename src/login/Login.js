@@ -32,7 +32,19 @@ class Login extends React.Component{
         .then(res => {
             console.log(res.data)
             this.props.assignToken(res.data.token)
+            if(res.data.success){
+                this.setState({
+                    ...this.state,
+                    success : true
+                })
+            }
         })
+    }
+
+    componentDidUpdate() {
+        if(this.state.success){
+            this.props.history.push('/')
+        }
     }
 
     render(){

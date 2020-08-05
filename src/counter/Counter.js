@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import classes from './counter.module.css'
 import axios from 'axios'
-// import { response } from 'express'
 
 class Counter extends React.Component{
 
@@ -26,7 +25,8 @@ class Counter extends React.Component{
             "task" : this.state.newtask
         }, {
             headers : {
-                'content-type' : 'application/json'
+                'content-type' : 'application/json',
+                'Authorization' : `Bearer ${this.props.userToken}`
             }
         })
         .then(response => {
@@ -39,12 +39,16 @@ class Counter extends React.Component{
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/todo')
+        axios.get('http://localhost:5000/todo', {
+            headers : {
+                'Authorization' : `Bearer ${this.props.userToken}`
+            }
+        })
         .then((response) => {
             console.log(response.data)
             this.setState({
                 ...this.state,
-                user : response.data.name,
+                user : response.data.username,
                 tasks : response.data.tasks
             })
         })
@@ -68,6 +72,7 @@ class Counter extends React.Component{
 const mapStateToProps = state => {
     return{
         user : state.user,
+        userToken : state.userToken,
         tasks : state.tasks
     }
 }

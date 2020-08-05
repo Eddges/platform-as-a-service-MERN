@@ -2,6 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('../config/cors')
 const User = require('../models/user')
+const authenticate = require('../config/authenticate')
 
 const userRouter = express.Router()
 userRouter.use(bodyParser.json())
@@ -10,8 +11,10 @@ userRouter.route('/')
 
 .options(cors.corsWithOptions, (req, res) => { res.sendStatus = 200 })
 
-.get(cors.corsWithOptions, (req, res, next) => {
-    User.findOne({name : 'ShekharTheGreat'})
+.get(cors.corsWithOptions, authenticate.verifyUser, (req, res, next) => {
+    
+    console.log(req.headers.authorization)
+    User.findOne({_id : req.user._id})
     .then((user) => {
         if(user){
             res.statusCode = 200
@@ -26,9 +29,9 @@ userRouter.route('/')
     })
 })
 
-.post(cors.corsWithOptions, (req, res, next) => {
+.post(cors.corsWithOptions, authenticate.verifyUser, (req, res, next) => {
 
-    User.findOne({name : req.body.name})
+    User.findOne({_id : req.user._id})
     .then(user => {
         if(user) {
             user.tasks.push(req.body.task)
