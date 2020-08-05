@@ -21,7 +21,7 @@ class Counter extends React.Component{
 
     axiosPost = () => {
 
-        axios.post('http://localhost:5000/users', {
+        axios.post('http://localhost:5000/todo', {
             "name" : "ShekharTheGreat",
             "task" : this.state.newtask
         }, {
@@ -39,7 +39,7 @@ class Counter extends React.Component{
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/users')
+        axios.get('http://localhost:5000/todo')
         .then((response) => {
             console.log(response.data)
             this.setState({

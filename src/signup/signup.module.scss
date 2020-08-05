@@ -1,0 +1,15 @@
+.ContainerDiv{
+    display : flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    p{
+        margin-top: 100px;
+    }
+    input{
+        margin-top : 50px;
+    }
+    button {
+        margin-top : 50px;
+    }
+}

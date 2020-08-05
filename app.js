@@ -3,6 +3,8 @@ const http = require('http')
 const userRouter = require('./routes/userRouter')
 const mongoose = require('mongoose')
 const config = require('./config/config')
+const authenticationRouter = require('./routes/authenticationRouter')
+const passport = require('passport')
 
 const dbconnect = mongoose.connect(config.mongoURL)
 .then((db) => {
@@ -15,7 +17,10 @@ const port = 5000
 
 const app = express()
 
-app.use('/users', userRouter)
+app.use(passport.initialize())
+
+app.use('/todo', userRouter)
+app.use('/user', authenticationRouter)
 
 const server = http.createServer(app)
 
